@@ -145,7 +145,9 @@ If you choose r or R:
 
 ![8](https://user-images.githubusercontent.com/101226388/189551181-3f751c9b-aa6c-46fa-b91b-6361178c3d68.png)
 
-If you choose 2:![9](https://user-images.githubusercontent.com/101226388/189551197-6108f331-b790-44bb-844e-40b888f94986.png)
+If you choose 2:
+
+![9](https://user-images.githubusercontent.com/101226388/189551197-6108f331-b790-44bb-844e-40b888f94986.png)
 
 If you choose 3:
 
