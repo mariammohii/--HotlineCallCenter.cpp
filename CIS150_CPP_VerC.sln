@@ -1,20 +1,421 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C++ Express 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CIS150_CPP_VerC", "CIS150_CPP_VerC\CIS150_CPP_VerC.vcxproj", "{C23F24FE-D70F-48EE-8ADD-465B2E955E14}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Win32 = Debug|Win32
-		Release|Win32 = Release|Win32
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C23F24FE-D70F-48EE-8ADD-465B2E955E14}.Debug|Win32.ActiveCfg = Debug|Win32
-		{C23F24FE-D70F-48EE-8ADD-465B2E955E14}.Debug|Win32.Build.0 = Debug|Win32
-		{C23F24FE-D70F-48EE-8ADD-465B2E955E14}.Release|Win32.ActiveCfg = Release|Win32
-		{C23F24FE-D70F-48EE-8ADD-465B2E955E14}.Release|Win32.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-EndGlobal
+#include<iostream>
+using std::cout;
+using std::cin;
+#include <string>
+#include<stdio.h>
+#include<conio.h>
+using namespace std;
+
+const int Size = 3; // it's constant values because Each user can own maximum of 3 lines
+
+const int CardSize = 14; //it's constant values because every Serial Card has only 14 Numbers
+
+float Balance; 
+
+struct date // use to input user's start date and renewal date of his lines 
+{
+	int month;
+	int day;
+	int year;
+};
+
+
+struct lineInfo // use to input user's mobile number, package type, balance, start date, and renewal date
+{
+	string MobileNumber;
+	string PackageType;
+	float Balance;
+	date StartDate;
+	date RenewalDate;
+};
+struct user // use to input user's ID, e-mail, name, password, address, and set of lines
+{
+	string ID;
+	string email;
+	string name;
+	string password;
+	string address;
+	lineInfo lines[Size];
+
+}Data[100];
+
+void CheckLines(lineInfo& l) //function For lines use to keep the mobile number, package type, balance, start date, and renewal date
+{
+	cout << "\n***\n";
+	cout << "Enter Your Package Type" << endl;
+	cin >> l.PackageType;
+	cout << "\n***\n";
+	cout << "Enter Your Start Date Of Using This Package" << endl;
+	cout << "Day: ";
+	cin >> l.StartDate.day;
+	cout << "Month: ";
+	cin >> l.StartDate.month;
+	cout << "Year: ";
+	cin >> l.StartDate.year;
+	cout << "\n***\n";
+	cout << "Enter Your Last Renew Date" << endl;
+	cout << "Day: ";
+	cin >> l.RenewalDate.day;
+	cout << "Month: ";
+	cin >> l.RenewalDate.month;
+	cout << "Year: ";
+	cin >> l.RenewalDate.year;
+	cout << "\n***\n";
+	cout << "Enter Your Mobile Number" << endl;
+	cin >> l.MobileNumber;
+	cout << "\n***\n";
+	cout << "Enter Your balance" << endl;
+	cin >> l.Balance;
+	cout << "\n***\n";
+}
+
+void user_data(int i)//function for user's data use to keep ID, e-mail, name, password, address, and set of lines
+{
+	cout << "\n***\n";
+	cout << "enter your ID" << endl;
+	cin >> Data[i].ID;
+	cout << "\n***\n";
+	cout << "enter your E-MAIL" << endl;
+	cin >> Data[i].email;
+	cout << "\n***\n";
+	cout << "enter your Password" << endl;
+	cin >> Data[i].password;
+	cout << "\n***\n";
+	cout << "enter your Name" << endl;
+	cin.ignore();
+    getline(cin , Data[i].name);
+	cout << "\n***\n";
+	cout << "enter your Address" << endl;
+	cin.ignore();
+    getline(cin , Data[i].address);
+	cout << "\n***\n";
+	string linesNumStr;
+	int linesNum;
+	cout << "Please enter the number of the lines" << endl;
+	cin >> linesNum;
+	if (linesNum > 3) {
+		cout << "Your maximum number of lines is 3" << endl;
+		linesNum = 3;
+	}
+	cout << "\n***\n";
+	for (int j = 0; j <linesNum; j++)
+	{
+		cout << "Line #" << j + 1 << endl; 
+		CheckLines(Data[i].lines[j]);
+	}
+	cout << "\n***\n";
+}
+
+
+void Renewreq(char request, int userIndex) //function use to renew user's subscription
+{
+
+	string mobileNumber;
+	string type;
+
+	cout << "\n***\n";
+	cout << "Enter Your Mobile Number" << endl;
+	cout << "\n***\n";
+	cin >> mobileNumber;
+	for (int i = 0; i < 3; i++) {
+		if (mobileNumber == Data[userIndex].lines[i].MobileNumber) {
+			if (request == 'C' || request == 'c') {
+				cout << "\n***\n";
+				cout << "Enter The New Type" << endl;
+				cout << "\n***\n";
+				cin >> type;
+				Data[userIndex].lines[i].PackageType = type;
+				cout << "\n***\n";
+				cout << "You have successfully changed your package Type" << endl;
+				cout << "\n***\n";
+				cout << "Please enter today's date: " << endl << "Day: ";
+				cout << "\n***\n";
+				cin >> Data[userIndex].lines[i].RenewalDate.day;
+				Data[userIndex].lines[i].StartDate.day = Data[userIndex].lines[i].RenewalDate.day;
+				cout << "\n***\n";
+				cout << "Month: ";
+				cout << "\n***\n";
+				cin >> Data[userIndex].lines[i].RenewalDate.month;
+				Data[userIndex].lines[i].StartDate.month = Data[userIndex].lines[i].RenewalDate.month;
+				cout << "\n***\n";
+				cout << "Year: ";
+				cout << "\n***\n";
+				cin >> Data[userIndex].lines[i].RenewalDate.year;
+				Data[userIndex].lines[i].StartDate.year = Data[userIndex].lines[i].RenewalDate.year;
+				return;
+			}
+			else if (request == 'R' || request == 'r') {
+				cout << "\n***\n";
+				cout << "You have successfully renewed your Subscription" << endl;
+				cout << "\n***\n";
+				cout << "Please enter today's date: " << endl << "Day: ";
+				cout << "\n***\n";
+				cin >> Data[userIndex].lines[i].RenewalDate.day;
+				cout << "\n***\n";
+				cout << "Month: ";
+				cout << "\n***\n";
+				cin >> Data[userIndex].lines[i].RenewalDate.month;
+				cout << "\n***\n";
+				cout << "Year: ";
+				cout << "\n***\n";
+				cin >> Data[userIndex].lines[i].RenewalDate.year;
+				return;
+			}
+			else
+				cout << "\n***\n";
+				cout << "Invalid" << endl;
+				cout << "\n***\n";
+		}
+	} 
+	cout << "Wrong Mobile Number" << endl;
+}
+
+void Balancecheck(int userIndex) //function use to check the balance and Discount the balance if user make a call or send a message
+{
+	string mobile;
+	cout << "\n***\n";
+	cout << "Please enter the mobile number you would like to use: ";
+	cout << "\n***\n";
+	cin >> mobile;
+	for (int i = 0; i < 3; i++) {
+		if (Data[userIndex].lines[i].MobileNumber == mobile) {
+			if (Data[userIndex].lines[i].Balance < 0.25)
+			{
+				cout << "\n***\n";
+				cout << "Your balance is not enough to make a call or send a message." << endl;
+				cout << "\n***\n";
+			}
+			else {
+				Data[userIndex].lines[i].Balance -= 0.25;
+				cout << "\n***\n";
+				cout << "Your new balance is " << Data[userIndex].lines[i].Balance << endl;
+				cout << "\n***\n";
+			}
+			return;
+		}
+	}
+	cout << "wrong mobile number." << endl; 
+
+}
+
+void Rechbalance(int userIndex) //function use to recharge user's balance by entering a card serial number with a specific amount of money
+{
+
+	char CardSerialNumber[CardSize]; 
+	bool error; 
+	int AmountOfMoney; 
+	string phone; 
+	do
+	{
+		error = false;
+		cout << "\n***\n";
+		cout << "Please Enter A Card Serial Number followed by # " << endl;
+		cout << "\n***\n";
+		for (int c = 0; c < CardSize; c++)
+		{
+			cin >> CardSerialNumber[c];
+			if (CardSerialNumber[c] == '#') {
+				cout << "\n***\n";
+				cout << "Error. Invalid Entry. Please try again." << endl;
+				cout << "\n***\n";
+				c = -1;
+			}
+		}
+		char hash;
+		cin >> hash;
+		if (hash != '#') {
+			cout << "\n***\n";
+			cout << "Error. Invalid Entry. Please try again." << endl;
+			cout << "\n***\n";
+			error = true;
+		}
+		else {
+			cout << "\n***\n";
+			cout << "Please Enter The Specific Amount Of Money " << endl;
+			cout << "\n***\n";
+			cin >> AmountOfMoney;
+			cout << "\n***\n";
+			cout << "Please enter the phone number that you would like to charge: ";
+			cout << "\n***\n";
+			cin >> phone;
+			for (int j = 0; j < 3; j++) {
+				if (Data[userIndex].lines[j].MobileNumber == phone) {
+					Data[userIndex].lines[j].Balance += AmountOfMoney;
+					cout << "\n***\n";
+					cout << "You have successfully recharged your balance. Your new balance is: " <<Data[userIndex].lines[j].Balance << endl;
+					cout << "\n***\n";
+					return;
+				}
+			}
+			cout << "wrong number." << endl; 
+		}
+	} while (error);
+}
+
+
+void Tranbalance(int userIndex, int users) //function use to transfer amount of balance user1 to balance user2
+{
+	string name, mobile, mobileTransfer;
+	int  lineIndex;
+	float balance;
+
+	cout << "\n***\n";
+	cout << "Please enter the name of the user that you want to transfer balance to him/her: " << endl;
+	cout << "\n***\n";
+	cin >> name;
+	cout << "\n***\n";
+	cout << "Please enter his/her mobile number: " << endl;
+	cout << "\n***\n";
+	cin >> mobileTransfer;
+	
+		for (int i = 0; i < users; i++) {
+			if (Data[i].name != name) {
+				for (int l = 0; l < Size; l++) {
+					if (Data[i].lines[l].MobileNumber != mobileTransfer)
+						lineIndex = l;
+				}
+				cout << "\n***\n";
+				cout << "Please enter the balance that you want to transfer to " << name << endl;
+				cout << "\n***\n";
+				cin >> balance;
+				cout << "\n***\n";
+				cout << "Please enter the mobile number that you want to use to transfer balance from: " << endl;
+				cout << "\n***\n";
+				cin>>mobile;
+				for (int j = 0 ; j <= Size ; j++){
+					if (Data[userIndex].lines[j].MobileNumber == mobile) {
+						if (Data[userIndex].lines[j].Balance >= balance) {
+							Data[userIndex].lines[j].Balance -= balance;
+							Data[i].lines[lineIndex].Balance += balance;
+							cout << "\n***\n";
+							cout << "Your new balance is " << Data[userIndex].lines[j].Balance << endl;
+							cout << "\n***\n";
+							cout << "Transfer Mission Completed Successfully" << endl;
+							cout << "\n***\n";
+				       }
+					
+						else
+						{
+							cout << "\n***\n";
+							cout << "Your balance is not enough." << endl;
+							cout << "\n***\n";
+						}
+					}
+				}
+			}
+		}
+	
+}
+
+int login(int users) //function use to allow the user to Enter the system by login with his information
+{
+
+	string id;
+	cout << "\n***\n";
+	cout << "Please enter your ID: " << endl;
+	cout << "\n***\n";
+	do {
+		cin >> id;
+		for (int i = 0; i < users; i++) {
+			if (Data[i].ID == id) {
+				string password;
+				cout << "\n***\n";
+				cout << "Please enter your password: " << endl;
+				cout << "\n***\n";
+				cin >> password;
+				while (Data[i].password != password) {
+					cout << "\n***\n";
+					cout << "Wrong password. Please try again." << endl << "Password: ";
+					cout << "\n***\n";
+					cin >> password;
+				}
+				cout << "\n***\n";
+				cout << "Login Successful. Welcome " << Data[i].name << "!" << endl;
+				cout << "\n***\n";
+				return i;
+			}
+		}
+		cout << "Wrong ID. Please try again." << endl << "ID: ";
+	} while (true);
+	
+}
+
+
+
+void main()
+{
+	char choice;
+	
+
+	cout << "Please enter the number of the users:" << endl;
+	int users;
+	cin >> users;
+	for (int i = 0; i < users; i++){
+		cout << "\n***\n";
+		cout << " Please Fill The List With Correct Information In Order For Our Services To Be Shown To You" << endl;
+		cout << "\n***\n";
+		user_data(i);
+	}
+
+	cout << "* Login *" << endl; 
+	int userIndex = login(users);
+	bool error;
+	do
+	{
+		error = false;
+		cout << "\n*\n Welcome To The Main Menu \n*\n" << endl;
+		cout << "option 1-You Want To Renew Your Subscribtion " << endl;
+		cout << "\n***\n";
+		cout << "option 2-You Want To Make A Call Or Send A Message " << endl;
+		cout << "\n***\n";
+		cout << "option 3-You Want To Recharge Your Balance " << endl;
+		cout << "\n***\n";
+		cout << "option 4-You Want To transfer balance to another user on the same network" << endl;
+		cout << "\n***\n";
+		cout << "option 5-exit" << endl;
+		cout << "\n***\n";
+		cout << "\nselect what do you want to do?" << endl;
+		cin >> choice;
+		switch (choice)
+		{
+		case '1':
+			cout << "\n***\n";
+			cout << "If You Want To Change Your Package Type Press C" << endl;
+			cout << "\n***\n";
+			cout << "If You Want To Renew Your Subscription Press R" << endl;
+			cout << "\n***\n";
+			cout << "Enter Your Request" << endl;
+			char request;
+			cin >> request;
+			Renewreq(request, userIndex);
+			break;
+		case '2':
+			cout << "\n***\n";
+			cout << "When You Chooses To Make A Call Or Send A Message, Your Balance Is Debited By 0.25 LE " << endl;
+			cout << "\n***\n";
+			Balancecheck(userIndex);
+			break;
+		case '3':
+			cout << "\n***\n";
+			cout << "Make Sure You Enter correct Card Serial Number " << endl;
+			cout << "\n***\n";
+			Rechbalance(userIndex);
+			break;
+		case '4':
+			Tranbalance(userIndex, users);
+			
+			break;
+		case '5':
+			cout << "\n***\n";
+			cout << "Thank You For Visiting Our System " << endl;
+			cout << "\n***\n";
+			break;
+		default:
+			cout << "\n***\n";
+			cout << "wrong choice." << endl;
+			cout << "\n***\n";
+			error = true;
+		}
+	}
+	while (error);
+}
