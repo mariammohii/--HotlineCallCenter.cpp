@@ -114,10 +114,60 @@ Inputs:
  Outputs:
 Has no output, has no return value (its void function)
 
-3.	Testing:
+3.Testing:
 
-	If you choose more than 1 user you should apply all the correct information for the number of users you choose.
+If you choose more than 1 user you should apply all the correct information for the number of users you choose.
   
 ![image](https://user-images.githubusercontent.com/101226388/189550965-388056f8-67ba-4b50-a86b-094f59d8227b.png)
+
+If you choose more than 1 line (<=3), you should apply all the correct information of these lines.
+
+![2](https://user-images.githubusercontent.com/101226388/189551081-7597e850-5d16-4c8b-9e0c-62bb481dea5b.png)
+
+
+![3](https://user-images.githubusercontent.com/101226388/189551107-1fd9d387-d8eb-4de4-b396-c3bba1011d33.png)
+
+![4](https://user-images.githubusercontent.com/101226388/189551113-79dce21d-2ec2-4cd0-a83c-23c2628a2d50.png)
+
+If you choose 1:
+
+If you choose c or C:
+
+![5](https://user-images.githubusercontent.com/101226388/189551148-82d5ec5d-5233-4c6c-9c2d-4b1f124f2918.png)
+
+![6](https://user-images.githubusercontent.com/101226388/189551154-04bd10b8-3554-4e60-941a-b53a25205d1e.png)
+
+If you choose 1:
+
+If you choose r or R:
+
+![7](https://user-images.githubusercontent.com/101226388/189551175-0d29e31e-19d0-4fe2-992f-02a6001c4a14.png)
+
+![8](https://user-images.githubusercontent.com/101226388/189551181-3f751c9b-aa6c-46fa-b91b-6361178c3d68.png)
+
+If you choose 2:![9](https://user-images.githubusercontent.com/101226388/189551197-6108f331-b790-44bb-844e-40b888f94986.png)
+
+If you choose 3:
+
+![10](https://user-images.githubusercontent.com/101226388/189551218-001f6b45-9eaa-421a-bce8-20f0483cb5d7.png)
+
+![11](https://user-images.githubusercontent.com/101226388/189551236-ae2f8ffb-f7c2-494f-98f8-d7c51dab1a4f.png)
+
+If you choose 4:
+
+![12](https://user-images.githubusercontent.com/101226388/189551261-c8c934fa-3abb-461a-bae5-7fd0b1130792.png)
+
+![13](https://user-images.githubusercontent.com/101226388/189551271-22a70517-89b9-4a16-b2db-eaa6236a1a13.png)
+
+If you choose 5:
+
+![14](https://user-images.githubusercontent.com/101226388/189551300-5ee7472d-1d22-4a49-9085-602a8c38b862.png)
+
+
+
+
+
+
+
 
 
