@@ -38,7 +38,7 @@
 •	User should apply the same id and password in login function that he wrote first in data function.
 •	User could apply the first name only of that someone he transfer amount of balance to him in tranbalance function.
 
-2.	Process Model (Functions):
+2.Process Model (Functions):
 
 •	Void CheckLines(lineInfo& l) //function For lines use to keep the mobile number, package type, balance, start date, and renewal date.
 Inputs:
