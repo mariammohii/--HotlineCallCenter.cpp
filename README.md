@@ -1,4 +1,5 @@
 # HotlineCallCenter.cpp
+
 1.	Data Model:
 1.1.	
 •	Const int Size=3;// it's constant values because Each user can own maximum of 3 lines, and its size is 4-byte.
